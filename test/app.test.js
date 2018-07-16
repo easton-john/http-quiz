@@ -4,7 +4,7 @@ const { assert } = require('chai');
 const app = require('../lib/app');
 chai.use(chaiHttp);
 
-describe('Pirates API', () => {
+describe('Penguins API', () => {
 
     it('Gets a list of penguins', () => {
         return chai.request(app)
@@ -34,20 +34,20 @@ describe('Pirates API', () => {
             });
     });
 
+    it('returns <p>All tracks recovered</p> on DELETE /mistake', () => {
+        return chai.request(app)
+            .del('/mistake')
+            .then(res => {
+                assert.equal(res.text, '<p>All tracks recovered</p>');
+            });
+    });
+
     it('responds with 404 on not found', () => {
         return chai.request(app)
             .get('/sad-path')
             .then(res => {
                 assert.equal(res.status, 404);
                 assert.match(res.text, /CANNOT/);
-            });
-    });
-
-    it('returns <p>All tracks recovered</p> on DELETE /mistake', () => {
-        return chai.request(app)
-            .del('/mistake')
-            .then(res => {
-                assert.equal(res.text, '<p>All tracks recovered</p>');
             });
     });
 });
