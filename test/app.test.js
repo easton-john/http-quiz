@@ -43,11 +43,11 @@ describe('Pirates API', () => {
             });
     });
 
-    // it('returns <p>All tracks recovered</p> on DELETE /mistake', () => {
-    //     return chai.request(app)
-    //         .del('/api/mistake')
-    //         .then(res => {
-    //             assert.equal(res.text, '<p>All tracks recovered</p>');
-    //         });
-    // });
+    it('returns <p>All tracks recovered</p> on DELETE /mistake', () => {
+        return chai.request(app)
+            .del('/mistake')
+            .then(res => {
+                assert.equal(res.text, '<p>All tracks recovered</p>');
+            });
+    });
 });
